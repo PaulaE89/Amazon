@@ -1,29 +1,30 @@
-<h2>Sign up</h2>
+<body class="text-center">
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "form-signin"}) do |f| %>
+    <%= render "layouts/alerts"%>
+    <%= devise_error_messages! %>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+    <%#= image_tag("bootstrap-solid.jpg", width: '72', height: '72', class: "mb-4") %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+    <h1 class="h3 mb-3 font-weight-normal">Sign up</h1>
 
-  <div class="field">
-    <%= f.label :password %>
+    <label for="inputEmail" class="sr-only">Email address</label>
+
+    <%= f.email_field :email, id: "inputEmail", class: "form-control", placeholder: "Email address", autofocus: true %>
+
+    <br>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+    <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "Password" %>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "Confirm Password" %>
 
-<%= render "devise/shared/links" %>
+
+
+    <%= f.submit "Sign up", class: "btn btn-lg btn-primary btn-block" %>
+
+    <%= render "devise/shared/links" %>
+    <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+  <% end %>
+</body>

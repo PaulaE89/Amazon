@@ -1,0 +1,47 @@
+<div class="container">
+  <%= render 'header' %>
+
+  <%= render 'categories' %>
+
+  <%= render "layouts/alerts" %>
+
+</div>
+
+<main role="main" class="container mt-4">
+  <div class="row">
+    <div class="col-md-12 blog-main">
+      <hr>
+        <div class="blog-post">
+          <h2 class="blog-post-title"><%= @post.title %></h2>
+          <p class="blog-post-meta">
+            <%= time_ago_in_words(@post.created_at) %> ago by
+            <a href="#"><%= @post.user.email %></a> |
+            Category: <%= @post.category.name %>
+          </p>
+          <p>
+            <% if user_signed_in? && current_user.admin? %>
+              <%= link_to "Editar", edit_post_path(@post), class: "btn btn-primary" %>
+              <%= link_to "Eliminar", post_path(@post), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
+            <% end %>
+          </p>
+          <p>
+            <%= @post.content %>
+          </p>
+        </div><!-- /.blog-post -->
+
+        <% if @post.comments.exists? %>
+          <%= render 'comments' %>
+        <% end %>
+
+        <%= render 'add_comment' %>
+
+        <br>
+
+    </div><!-- /.blog-main -->
+
+
+  </div><!-- /.row -->
+
+</main><!-- /.container -->
+
+<%= render "layouts/footer" %>

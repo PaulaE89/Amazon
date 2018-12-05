@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Login - Amazon</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+
+    <%= stylesheet_link_tag    'signin', media: 'all', 'data-turbolinks-track': 'reload' %>
+
+  </head>
+
+  <body>
+  
+    <%= yield %>
+
+    <script>
+    $(".alert").fadeIn(500).css("opacity","0.85").delay(6000).slideUp(1000);
+    $(".alerts").on('click','.alert', function(){$(this).remove()});
+    </script>
+  </body>
+</html>

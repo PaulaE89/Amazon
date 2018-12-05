@@ -1,0 +1,47 @@
+
+<body class="text-center">
+           <%= form_for @subscriptor do |f| %>
+
+              <% if @subscriptor.errors.any? %>
+                <div class="alert alert-danger alert-block alert-fized">
+                  <p>
+                    <%= pluralize(@subscriptor.errors.count, "error") %>
+                    prevented this post from saving
+                  </p>
+                  <ul>
+                    <% @subscriptor.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+
+              <%= image_tag("bootstrap-solid.jpg", width:'72', height:'72', class:'mb-4')%>
+               <h1 class="h3 mb-3 font-weight-normal">subscribete</h1>             
+
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Nombre </label>
+                <%=f.text_field :name, class: "form-control"%>
+
+                 </div>
+           
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">email</label>
+                <%= f.email_field :email, class: "form-control" %>
+              </div>
+              <%= f.submit class: "btn btn-primary" %>
+            <% end %>
+
+          </p>
+
+        </div><!-- /.blog-post -->
+
+    </div><!-- /.blog-main -->
+
+
+  </div><!-- /.row -->
+
+</main><!-- /.container -->
+
+<%= render "layouts/footer" %>
+</body>

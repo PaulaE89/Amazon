@@ -1,2 +1,18 @@
 <h1>Blog#index</h1>
 <p>Find me in app/views/blog/index.html.erb</p>
+
+
+<%= Post.published.all.each do  |post| %>
+    <table>
+    <tr>  <%= post.title%></tr>
+    <tr> <%=post.content %></tr>
+    </table>
+    <% end %>
+
+    #posts most populares
+
+    <%= Post.popular.each do |post| %>
+        <tr>  <%= post.title%></tr>
+        <tr> <%=post.content %></tr>
+            
+<%end %>

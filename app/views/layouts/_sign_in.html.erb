@@ -1,0 +1,8 @@
+<% if user_signed_in? %>
+  <%= link_to "Edit User", edit_user_registration_path, class: "btn btn-sm btn-outline-secondary" %>&nbsp;
+  <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "btn btn-sm btn-outline-danger" %>
+  <!-- You are logged in as <%#= current_user.email %> -->
+<% else %>
+  <%= link_to 'Login', new_user_session_path, class: "btn btn-sm btn-outline-secondary" %>&nbsp;
+  <%= link_to 'Register', new_user_registration_path, class: "btn btn-sm btn-outline-primary" %>
+<% end %>

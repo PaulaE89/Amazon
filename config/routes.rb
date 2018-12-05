@@ -1,8 +1,20 @@
 Rails.application.routes.draw do
 
+
+
   devise_for :users
   # Index, Root or Home
   root 'home#index'
+
+  resources :posts do
+
+    resources :comments
+  end
+
+    resources :subcriptors, only: [:new, :create]
+
+
+ # get 'posts/index', to:'posts#index'
 
   # Home Routes
   # get '/home/index', to: 'home#index', as: 'cualquier_cosa'

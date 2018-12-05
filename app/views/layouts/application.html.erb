@@ -5,13 +5,27 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Custom styles for this template -->
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+
+
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+
     <%= yield %>
+    <% #alerts %>
+    <script>
+    $(".alert").fadeIn(500).css("opacity","0.85").delay(6000).slideUp(1000);
+    $(".alerts").on('click','.alert', function(){$(this).remove()});
+    </script>
+
   </body>
 </html>

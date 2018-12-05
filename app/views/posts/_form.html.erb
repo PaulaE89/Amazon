@@ -1,0 +1,62 @@
+<div class="container">
+  <%= render 'header' %>
+
+  <%= render 'categories' %>
+
+  <%= render "layouts/alerts" %>
+
+</div>
+
+<main role="main" class="container mt-4">
+  <div class="row">
+    <div class="col-md-12 blog-main">
+      <hr>
+        <div class="blog-post">
+          <% unless @post.new_record? %>
+            <h2 class="blog-post-title"><%= @post.title %></h2>
+            <p class="blog-post-meta"><%= time_ago_in_words(@post.created_at) %> ago by <a href="#"><%= @post.user.email %></a></p>
+          <% end %>
+          <p>
+            <%= form_for @post do |f| %>
+
+              <% if @post.errors.any? %>
+                <div class="alert alert-danger alert-block alert-fized">
+                  <p>
+                    <%= pluralize(@post.errors.count, "error") %>
+                    prevented this post from saving
+                  </p>
+                  <ul>
+                    <% @post.errors.full_messages.each do |msg| %>
+                      <li><%= msg %></li>
+                    <% end %>
+                  </ul>
+                </div>
+              <% end %>
+
+              <div class="form-group">
+                <label>Category</label>
+                <%= f.collection_select(:category_id, Category.all, :id, :name, { prompt: "Choose a Category" }, { class: "form-control"}) %>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Title</label>
+                <%= f.text_field :title, class: "form-control"  %>
+              </div>
+              <div class="form-group">
+                <label for="exampleFormControlTextarea1">Example textarea</label>
+                <%= f.text_area :content, class: "form-control" %>
+              </div>
+              <%= f.submit class: "btn btn-primary" %>
+            <% end %>
+
+          </p>
+
+        </div><!-- /.blog-post -->
+
+    </div><!-- /.blog-main -->
+
+
+  </div><!-- /.row -->
+
+</main><!-- /.container -->
+
+<%= render "layouts/footer" %>

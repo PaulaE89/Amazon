@@ -1,0 +1,35 @@
+<div class="row mb-2">
+  <div class="col-md-6">
+    <div class="card flex-md-row mb-4 box-shadow h-md-250">
+      <div class="card-body d-flex flex-column align-items-start">
+        <strong class="d-inline-block mb-2 text-primary"><%= @shoes_category.name %></strong>
+        <h3 class="mb-0">
+          <a class="text-dark" href="#"><%= @shoes_last_post.title %></a>
+        </h3>
+        <div class="mb-1 text-muted"><%= time_ago_in_words(@shoes_last_post.created_at) %> ago</div>
+        <p class="card-text mb-auto">
+          <%= @shoes_last_post.content.length > 50 ? @shoes_last_post.content.truncate(50) : @shoes_last_post.content %>
+        </p>
+        <%= link_to "Continue reading", post_path(@shoes_last_post) %>
+      </div>
+      <%= image_tag('download.svg', class: "card-img-right flex-auto d-none d-md-block")  %>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card flex-md-row mb-4 box-shadow h-md-250">
+      <div class="card-body d-flex flex-column align-items-start">
+        <strong class="d-inline-block mb-2 text-success"><%= @glasses_category.name %></strong>
+        <h3 class="mb-0">
+          <%= link_to @glasses_last_post.title, post_path(@glasses_last_post), class: "text-dark" %>
+        </h3>
+        <div class="mb-1 text-muted"><%= time_ago_in_words(@glasses_last_post.created_at)  %> ago</div>
+        <p class="card-text mb-auto">
+          <%= @glasses_last_post.content.length > 50 ? @glasses_last_post.content.truncate(50) : @glasses_last_post.content %>
+        </p>
+        <%= link_to "Continue reading", post_path(@glasses_last_post) %>
+      </div>
+      <%= image_tag('download.svg', class: "card-img-right flex-auto d-none d-md-block")  %>
+    </div>
+  </div>
+</div>
+</div>
