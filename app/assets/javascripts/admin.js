@@ -1,1 +1,3 @@
-#mi javacript para el admin
+$('.my_class').on('click', function() {
+    return 'Hello World'
+  })

@@ -2,12 +2,6 @@
   <div class="col-md-6 px-0">
     <h1 class="display-4 font-italic"><%= @last_post.title %></h1>
     <p class="lead my-3">
-      <%# if @last_post.content.length > 140 %>
-        <%#= @last_post.content.truncate(140) %>
-      <%# else %>
-        <%#= @last_post.content %>
-      <%# end %>
-
       <%= @last_post.content.length > 140 ? @last_post.content.truncate(140) : @last_post.content %>
     </p>
     <p class="lead mb-0">
